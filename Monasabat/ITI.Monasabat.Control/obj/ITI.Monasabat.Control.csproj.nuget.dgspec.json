@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Final\\Final Project\\Monasabat\\ITI.Monasabat.Control\\ITI.Monasabat.Control.csproj": {}
+    "D:\\Final Project ITI\\Monasabat\\Monasabat\\ITI.Monasabat.Control\\ITI.Monasabat.Control.csproj": {}
   },
   "projects": {
-    "D:\\Final\\Final Project\\Monasabat\\ITI.Monasabat.Control\\ITI.Monasabat.Control.csproj": {
+    "D:\\Final Project ITI\\Monasabat\\Monasabat\\ITI.Monasabat.Control\\ITI.Monasabat.Control.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Final\\Final Project\\Monasabat\\ITI.Monasabat.Control\\ITI.Monasabat.Control.csproj",
+        "projectUniqueName": "D:\\Final Project ITI\\Monasabat\\Monasabat\\ITI.Monasabat.Control\\ITI.Monasabat.Control.csproj",
         "projectName": "ITI.Monasabat.Control",
-        "projectPath": "D:\\Final\\Final Project\\Monasabat\\ITI.Monasabat.Control\\ITI.Monasabat.Control.csproj",
-        "packagesPath": "C:\\Users\\ammar\\.nuget\\packages\\",
-        "outputPath": "D:\\Final\\Final Project\\Monasabat\\ITI.Monasabat.Control\\obj\\",
+        "projectPath": "D:\\Final Project ITI\\Monasabat\\Monasabat\\ITI.Monasabat.Control\\ITI.Monasabat.Control.csproj",
+        "packagesPath": "C:\\Users\\NANOSOFT\\.nuget\\packages\\",
+        "outputPath": "D:\\Final Project ITI\\Monasabat\\Monasabat\\ITI.Monasabat.Control\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ammar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\NANOSOFT\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -27,7 +27,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Final Project ITI\\Monasabat\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj": {
+                "projectPath": "D:\\Final Project ITI\\Monasabat\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -54,6 +58,89 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Final Project ITI\\Monasabat\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Final Project ITI\\Monasabat\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj",
+        "projectName": "ITI.Monasabat.Models",
+        "projectPath": "D:\\Final Project ITI\\Monasabat\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj",
+        "packagesPath": "C:\\Users\\NANOSOFT\\.nuget\\packages\\",
+        "outputPath": "D:\\Final Project ITI\\Monasabat\\Monasabat\\Monasapat\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\NANOSOFT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Final\\Final Project\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj": {}
+    "D:\\Final Project ITI\\Monasabat\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj": {}
   },
   "projects": {
-    "D:\\Final\\Final Project\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj": {
+    "D:\\Final Project ITI\\Monasabat\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Final\\Final Project\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj",
+        "projectUniqueName": "D:\\Final Project ITI\\Monasabat\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj",
         "projectName": "ITI.Monasabat.Models",
-        "projectPath": "D:\\Final\\Final Project\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj",
-        "packagesPath": "C:\\Users\\ammar\\.nuget\\packages\\",
-        "outputPath": "D:\\Final\\Final Project\\Monasabat\\Monasapat\\obj\\",
+        "projectPath": "D:\\Final Project ITI\\Monasabat\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj",
+        "packagesPath": "C:\\Users\\NANOSOFT\\.nuget\\packages\\",
+        "outputPath": "D:\\Final Project ITI\\Monasabat\\Monasabat\\Monasapat\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ammar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\NANOSOFT\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
