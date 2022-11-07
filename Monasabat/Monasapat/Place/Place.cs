@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Monasapat.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
+        public int NumberOfChair { get; set; }
 
         public string Type { get; set; }
         [ForeignKey("PlaceOwner")]
@@ -27,6 +29,10 @@ namespace Monasapat.Models
         public virtual ICollection<Comments> Comments { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; }
         public virtual City city { get; set; }
+
+
+        [NotMapped]
+        public List<IFormFile>? Images { get; set; }
 
     }
 }

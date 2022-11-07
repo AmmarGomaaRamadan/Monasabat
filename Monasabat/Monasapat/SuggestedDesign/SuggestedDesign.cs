@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -16,5 +17,9 @@ namespace Monasapat.Models
 
         //navigation
         public virtual Place Place { get; set; }
+
+
+        [NotMapped]
+        public List<IFormFile>? Images { get; set; }
     }
 }
