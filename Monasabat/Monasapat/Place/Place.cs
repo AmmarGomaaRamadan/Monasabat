@@ -13,7 +13,8 @@ namespace Monasapat.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
-        public int NumberOfChair { get; set; }
+
+        //public int NumberOfChair { get; set; }
 
         public string Type { get; set; }
         [ForeignKey("PlaceOwner")]

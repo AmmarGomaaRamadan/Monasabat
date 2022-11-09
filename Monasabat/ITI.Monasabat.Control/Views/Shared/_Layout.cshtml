@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using Monasapat.Models
+@inject  SignInManager<User> singInManeger;
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Home</title>
@@ -9,13 +12,13 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/themify/themify-icons.css">
+	<link rel="stylesheet" type="text/css" href="~/fonts/themify/themify-icons.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="~/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/elegant-font/html-css/style.css">
+	<link rel="stylesheet" type="text/css" href="~/fonts/elegant-font/html-css/style.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
 <!--===============================================================================================-->
@@ -31,8 +34,10 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/lightbox2/css/lightbox.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="~/css/util.css">
+	<link rel="stylesheet" type="text/css" href="~/css/main.css">
+	
+	<link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -51,26 +56,36 @@
 				</div>
 
 				<span class="topbar-child1">
+
 					Various kinds of life occasions
+					@if(User.IsInRole("Admin")){
+					<a asp-controller="Admin" asp-action="Index">DashBoard</a>
+					}
+				
 				</span>
 
 				<div class="topbar-child2">
-					<span class="topbar-email">
+					@if (singInManeger.IsSignedIn(User)) {
+					
+						<span class="topbar-email">
+					    <h5>Welcom MR:@User.Identity.Name </h5>	
+
+					</span>
+					}else{
+						<span class="topbar-email">
 						Monaspat@example.com
 					</span>
+					}
 
-					<div class="topbar-language rs1-select2">
-						<select class="selection-1" name="time">
-							<option>USD</option>
-							<option>EUR</option>
-						</select>
-					</div>
+					
+
+					
 				</div>
 			</div>
 
 			<div class="wrap_header">
 				<!-- Logo -->
-				<a href="index.html" class="logo">
+				<a href="index.html" class="logo" style="text-decoration:none;">
 					<div class="left">
 						<span>MONASABAT</span>
 					</div>
@@ -81,21 +96,24 @@
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a asp-controller="Home" asp-action="Index">Home</a>
+								<a asp-controller="Home" asp-action="Index" style="text-decoration:none;">Home</a>
 								
 							</li>
 
 							<li class="sale-noti">
-							<a href="product.html">Places</a>
-							</li>
-						
-
-							<li>
-								<a  asp-controller="Home" asp-action="About">About</a>
+							<a asp-controller="PlaceOcc" asp-action="Places"style="text-decoration:none;">Places</a>
 							</li>
 
 							<li>
-								<a  asp-controller="Home" asp-action="Contact">Contact</a>
+								<a asp-controller="Home" asp-action="OurTeam" style="text-decoration:none;">Our Team</a>
+							</li>
+
+							<li>
+								<a asp-controller="Home" asp-action="About" style="text-decoration:none;">About</a>
+							</li>
+
+							<li>
+								<a asp-controller="Home" asp-action="Contact" style="text-decoration:none;">Contact</a>
 							</li>
 
 						</ul>
@@ -103,22 +121,25 @@
 				</div>
 
 				<!-- Header Icon -->
-				<div class="header-icons">
-					<a href="edit.html" class="header-wrapicon1 dis-block">
-						<img src="~/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
-					</a>
-
-					<span class="linedivide1"></span>
 					
+				<div class="header-icons">
+					@if(singInManeger.IsSignedIn(User)){
+						<a asp-controller="User" asp-action="SignOut" style="text-decoration:none; color:black">SignOut</a>
+						<span class="linedivide1"></span>
+						<a  class="header-wrapicon1 dis-block" asp-controller="UserProfile" asp-action="GetUserReservations">
+							<img src="~/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+						</a>
+					}
+					else{
+						<a asp-controller="User" asp-action="SignUp" style="text-decoration:none; color:black">SignUp</a>
+						<span class="linedivide1"></span>
+						<a asp-controller="User" asp-action="SignIn" style="text-decoration:none; color:black">SignIn</a>
+					}
 
-					<div class="topbar-language rs1-select2">
-						<select class="selection-1" name="time">
-							<option><a asp-controller="Home" asp-action="Index">SignUp</a></option>
-							<option><a asp-controller="Home" asp-action="Index">LogIn</a></option>
-							<option><a asp-controller="Home" asp-action="Index">LogOUt</a></option>
-							
-						</select>
-					</div>
+				
+
+					
+								
 					
 				</div>
 
@@ -228,7 +249,7 @@
 
 	@RenderBody();
 
-	
+	@RenderSection("Scripts",false);
 
 	<!-- Footer -->
 	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
@@ -454,6 +475,10 @@
 
 	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
+
+	<script src="~/Content/lib/jquery/jquery.min.js"></script>
+	<script src="~/Content/lib/jquery-validate/jquery.validate.min.js"></script>
+	<script src="~/Content/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
 </body>
 </html>

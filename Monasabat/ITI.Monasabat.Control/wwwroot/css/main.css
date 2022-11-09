@@ -2346,4 +2346,11 @@ input.num-product::-webkit-inner-spin-button {
     margin: 0; 
 }
 
+#sec{
+    background-image: url('../images/heading-pages-05.jpg');
+   
+}
+.sec {
+    background-color: palegreen;
+}
 

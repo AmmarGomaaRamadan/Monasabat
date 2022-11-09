@@ -1,0 +1,173 @@
+﻿@using Monasapat.Models
+@model List<Place>
+<style>
+	.gallery-title {
+		font-size: 36px;
+		color: #42B32F;
+		text-align: center;
+		font-weight: 500;
+		margin-bottom: 70px;
+	}
+
+		.gallery-title:after {
+			content: "";
+			position: absolute;
+			width: 7.5%;
+			left: 46.5%;
+			height: 45px;
+			border-bottom: 1px solid #5e5e5e;
+		}
+
+	.filter-button {
+		font-size: 18px;
+		border: 1px solid #42B32F;
+		/*border-radius: 2px;*/
+		text-align: center;
+		color: #42B32F;
+		margin-bottom: 30px;
+	}
+
+		.filter-button:hover {
+			font-size: 18px;
+			border: 1px solid #42B32F;
+			/*border-radius: 5px;*/
+			text-align: center;
+			background-color:aqua;
+			color: #42B32F;
+			/*background-color: #42B32F;*/
+		}
+
+	.btn-default:active .filter-button:active {
+		background-color: aqua;
+		color: #42B32F;
+	}
+
+	.port-image {
+		width: 100%;
+	}
+
+	.gallery_product {
+		margin-bottom: 30px;
+	}
+
+	.pos {
+		padding-left: 10px;
+		padding-right: 10px;
+		width: 80%;
+		margin: 5px 10px;
+		
+	}
+</style>
+<link href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<div class="row" style="padding-top:20px" >
+
+<!-- filter show -->
+	<div class="col-sm-12 col-md-6 col-lg-3">
+		<div align="left">
+			<form style="margin-top:10px" method="post" asp-controller="PlaceOcc" asp-action="FilterPlaces">
+				
+					<div>
+						<label style="display:block;margin-left:10px">Choose occasion type</label>
+					<select id="categiory" name="categiory" class="btn btn-default filter-button pos">
+						<option value="none"> </option>
+						<option value="Wedding hall">Wedding</option>
+							<option value="Conference hall">Conference</option>
+							<option value="BirthDay">Birthday</option>
+						</select>
+					</div>
+					<div>
+					<label style="display:block;margin-left:10px">Choose City</label>
+					<select id="city" name="city" class="btn btn-default filter-button pos">
+							<option value="none"> </option>
+							@foreach (string s in ViewBag.cit)
+							{
+								<option>@s</option>
+							}
+						</select>
+					</div>
+					<div>
+					<label style="display:block;margin-left:10px">Choose Suitable Date</label>
+					<input type="date" id="OccasionDate" value="@DateTime.Now" class="btn btn-default filter-button pos" style="border: 1px solid #42B32F" />
+					</div>
+					<div>
+					<label style="display:block;margin-left:10px">Choose Price</label>
+					<select id="a" class="btn btn-default filter-button pos">
+							<option value="0"></option>
+							<option value="10000">less than 10000</option>
+						    <option value="100000">Greater than 10000</option>
+						</select>
+					</div>
+				
+				
+					<div align="center">
+						<a >
+							<input type="submit" class="btn btn-default filter-button" value="Filter" style="width:50%;background-color:#42B32F;color:white"/>
+
+						</a>
+					</div>
+				
+
+			</form>
+
+
+		</div>
+	</div>
+
+	
+<!-- Places show -->
+	<div class="col-sm-12 col-md-6 col-lg-9">
+		<div class="row">
+		   @foreach(Place p in Model)
+		   {
+				@if (p.PlaceImages.Count < 1 || p.PlaceImages == null)
+				{
+
+
+				}
+
+				else
+				{
+					<div class="col-sm-12 col-md-6 col-lg-4  ">
+					<!-- Block2 -->
+						<div class="block2" style="border-radius:5px;border:0.5px solid;margin:5px;margin-bottom:0px;padding:0px">
+						<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+							<img src="~/placeimg/@p.PlaceImages.FirstOrDefault().Path" style="border-radius:5px;height:310px;width:100%">
+
+
+							<div class="block2-overlay trans-0-4">
+								
+								<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+								<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+						
+
+								<div class="block2-btn-addcart w-size1 trans-0-4">
+									<!-- Button -->
+
+									<a asp-controller="PlaceOcc" asp-action="Places">
+										<input type="button" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" value="Details">
+									</a>
+									
+								</div>
+							</div>
+						</div>
+
+						</div>
+
+						<div class="block2-txt p-t-20" >
+							<div class="block2-name dis-block s-text3 p-b-5" style="margin-top:5px">
+								@p.Name <br/> @p.Type
+							</div>
+							<div class="block2-price m-text6 p-r-5" style="margin-bottom:10px">
+								@p.Price.ToString() P
+							</div>
+						</div>
+					</div>
+				}
+
+		}
+	</div>
+	</div>
+</div>
