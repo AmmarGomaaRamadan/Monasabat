@@ -11,7 +11,7 @@ builder.Services.AddScoped(typeof(MonasabatContext));
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/User/SignIn";
-    //options.AccessDeniedPath = "/User/AccessDenied";
+    options.AccessDeniedPath = "/User/AccessDenied";
 });
 
 
@@ -31,6 +31,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}/{id2?}/{id3?}");
 
 app.Run();

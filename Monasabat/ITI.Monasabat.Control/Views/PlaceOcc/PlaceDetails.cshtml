@@ -1,0 +1,191 @@
+﻿
+@model Place;
+
+<style>
+	div{
+		margin:0px;
+		padding:0px;
+	}
+	body{
+		padding:0px;
+		margin:0px;
+		
+		
+	}
+	.comment
+	{
+		padding:10px;
+		margin:10px auto;
+		font-family:Montserrat-Regular;
+		background-color:#f8f9fa;
+		
+		color:black
+		
+	}
+	.sp{
+		font-family:Montserrat-bold;
+		/*color:Black;*/
+		font-size:18px;
+		/*margin:10px;*/
+		
+	}
+	.all
+	{
+		width:80%;
+		padding:10px;
+		text-align:left;
+		align-content:center;
+		margin:10px auto;
+	}
+	.date-cl{
+		width:100%;
+		border:1px solid #33118d9c;
+		/*background-color:#33118d9c;*/
+		/*color:white;*/
+		padding:5px;
+		font-family:Montserrat-Regular;
+		font-size:18px;
+	}
+	.date-btn{
+		width:50%;
+		border: 1px solid #33118d9c;
+		border-radius: 5px;
+		background-color:#33118d9c;
+		padding:10px;
+		color:white;
+		font-family:Montserrat-Bold;
+		font-size:16px;
+	}
+	.row
+	{
+		padding:0px;
+		margin:0px;
+	}
+</style>
+@if(Model!=null)
+{
+	<div style="text-align:center;margin:20px">
+
+		<h2 style="font-weight:bold;color:#33118d9c">@Model.Name</h2>
+		
+	</div>
+
+	<div style="background-color:#f8f9fa;padding:10px">
+		<div class="row">
+			<div class="col-sm-12 col-md-10 col-lg-6"style="padding:10px">
+				<div style="background-color:white">
+					<h4 style="font-weight:bolder;color:#33118d9c; padding-top:10px;text-align:center">Place information</h4><br />
+					<div class="all">
+						<span class="sp">Description </span><br />
+						<span>
+							This Is @Model.Type is owned to Mr Ammar Gomaa and it had a very good reviews from the
+							the previous clients
+						</span>
+					</div>
+					<div class="all">
+						<span class="sp">@Model.Name @Model.Type</span>
+					</div>
+					<div class="all">
+						<span class="sp" style="font-family:Montserrat-Regular;">The place capacity 150 visitor</span>
+					</div>
+					<div class="all">
+						<span class="sp" style="font-family:Montserrat-Regular;">The price is @Model.Price P per night</span>
+					</div>
+					<div class="all">
+						<span class="sp" style="font-family:Montserrat-Regular;">Is owned by Ammar Gomaa</span>
+					</div>
+					<form method="post">
+						<div class="all">
+							<span class="sp" style="font-family:Montserrat-Regular;">Choose the date</span>
+						</div>
+						<div class="all">
+							<input type="date" class="date-cl" id="date" name="date" />
+						</div>
+						<div class="all">
+							<input type="submit" class="date-btn" value="Reserve" />
+						</div>
+
+					</form>
+				</div>
+				<div style="background-color:white">
+					<h4 style="text-align:center;color:#33118d9c">Reviews of the other clients</h4><br />
+					@if (ViewBag.Comments == null)
+					{
+
+						<div class="comment col-sm-12 col-md-10 col-lg-8 ">
+							<p style="padding-left:10px;text-align:left;font-family:Montserrat-Bold;">No user name</p>
+							<p style="font-family:Montserrat-Bold;">This place is not reviewed until now</p>
+
+						</div>
+
+					}
+					else
+					{
+						@foreach (var item in ViewBag.Comments)
+						{
+							<div class="comment col-sm-12 col-md-10 col-lg-8">
+								<p style="padding-left:10px;text-align:left;font-family:Montserrat-Bold;">@item.UserName</p>
+								<p style="font-family:Montserrat-Regular;">@item.Comment</p>
+							</div>
+
+						}
+					}
+				</div>
+
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-6" style="padding:10px">
+				<div style="background-color:white">
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12">
+							<div align="center">
+								<h4 style="text-align:center;color:#33118d9c">Other Images to the Place</h4><br />
+							</div>
+						</div>
+						@foreach (var item in Model.PlaceImages)
+						{
+							<div class="col-sm-12 col-md-10 col-lg-6">
+								<img src="~/placeimg/@item.Path" alt="Some place Image" style="height:300px;width:100%;margin:5px">
+							</div>
+						}
+
+						<div />
+					</div>
+
+				</div>
+			</div>
+		</div>
+				
+	</div>
+	@*<div style="background-color:#f8f9fa;padding:10px">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-6" style="padding:10px">
+				<div style="background-color:white">
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12">
+							<div align="center">
+								<h4 style="text-align:center;color:#33118d9c">Tha available designs for the place</h4><br />
+							</div>
+						</div>
+						@foreach (var item in Model.PlaceImages)
+						{
+							<div class="col-sm-12 col-md-10 col-lg-6">
+								<img src="~/placeimg/@item.Path" alt="Some place Image" style="height:300px;width:100%;margin:5px">
+							</div>
+						}
+
+						<div />
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>*@
+	
+}
+else
+{
+	
+}
+			
+	
+	

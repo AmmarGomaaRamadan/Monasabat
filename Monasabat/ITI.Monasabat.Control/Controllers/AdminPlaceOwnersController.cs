@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using Monasapat.Models;
 
 namespace ITI.Monasabat.Control.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminPlaceOwnersController : Controller
     {
         private readonly MonasabatContext _context;
@@ -49,18 +52,22 @@ namespace ITI.Monasabat.Control.Controllers
         }
 
         // POST: AdminPlaceOwners/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Name")] PlaceOwner placeOwner)
         {
             if (!ModelState.IsValid)
             {
+                if(placeOwner.Name == null) {
+                    ModelState.AddModelError("", "you should enter valid data");
+                    return View();
+                }
                 _context.Add(placeOwner);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+          
             return View(placeOwner);
         }
 
@@ -80,9 +87,7 @@ namespace ITI.Monasabat.Control.Controllers
             return View(placeOwner);
         }
 
-        // POST: AdminPlaceOwners/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,Name")] PlaceOwner placeOwner)
@@ -96,6 +101,11 @@ namespace ITI.Monasabat.Control.Controllers
             {
                 try
                 {
+                    if (placeOwner.Name == null)
+                    {
+                        ModelState.AddModelError("", "you should enter valid data");
+                        return View();
+                    }
                     _context.Update(placeOwner);
                     await _context.SaveChangesAsync();
                 }

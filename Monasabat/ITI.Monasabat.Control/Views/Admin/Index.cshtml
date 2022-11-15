@@ -1,5 +1,123 @@
-﻿@{
+﻿
+@{
     Layout = "_Layout2";
 }
+<style>
+    main {
+        margin-top: 85px;
+        padding: 2rem 1.5rem;
+        background-color: #f1f5f9;
+        min-height: calc(100vh - 90px);
+    }
 
-<h1>welcom hazem</h1>
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 2rem;
+        margin-top: 1rem;
+    }
+
+    .cards-single {
+        display: flex;
+        justify-content: space-between;
+        background: rgb(190, 82, 240);
+        padding: 2rem;
+        border-radius: 2px;
+    }
+
+        .cards-single div:last-child span {
+            font-size: 3rem;
+            color: var(--main-color);
+        }
+
+        .cards-single div:first-child span {
+            color: var(--text-grey);
+        }
+
+        .cards-single:last-child {
+            background: var(--main-color);
+        }
+
+            .cards-single:last-child h1,
+            .cards-single:last-child div:first-child span
+            .cards-single:last-child div:last-child span {
+                color: rgb(209, 28, 28);
+            }
+</style>
+
+<div class="col-md-8">
+    <main>
+        <div class="cards">
+            <div class="cards-single">
+                <div>
+                    <h1>@ViewBag.NumberOFUser</h1>
+                    <span>Users</span>
+                </div>
+                <div>
+                    <span class="las la-users"></span>
+                </div>
+            </div>
+            <div class="cards-single">
+                <div>
+                    <h1>@ViewBag.NumberOfOFReservations</h1>
+                    <span>Reservations</span>
+                </div>
+                <div>
+                    <span class="las la-clipboard-list"></span>
+                </div>
+            </div>
+            <div class="cards-single">
+                <div>
+                    <h1>@ViewBag.NumberOfPlaces</h1>
+                    <span>Places</span>
+                </div>
+                <div>
+                    <span class="las la-shopping-bag"></span>
+                </div>
+            </div>
+            <div class="cards-single">
+                <div>
+                    <h1>$@ViewBag.TotalMoney</h1>
+                    <span>Total income</span>
+                </div>
+                <div>
+                    <span class="las la-google-wallet"></span>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+
+<!-- ===================================================================================================================================== -->
+<div class="col-md-4">
+    <div class="card card-user">
+        <div class="image">
+            <img src="~/assets/img/full-screen-image-3.jpg" alt="..." />
+        </div>
+        <div class="content">
+            <div class="author">
+                <a href="#">
+                    <img class="avatar border-gray" src="~/assets/img/faces/face-0.jpg" alt="..." />
+
+                    <h4 class="title">
+                        @User.Identity.Name<br />
+                        <small>Admin</small>
+                    </h4>
+                </a>
+            </div>
+            <p class="description text-center">
+                <br>
+                Lorem ipsum dolor sit amet <br>
+                Lorem ipsum dolor sit amet"
+            </p>
+        </div>
+        <hr>
+        <div class="text-center">
+            <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+            <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+            <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+
+        </div>
+    </div>

@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "_Layout2";
+}
+<form role="form" align="center" method="post" asp-controller="AdminPlace" asp-action="Edit" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" id="Name" name="name" aria-describedby="emailHelp" value="@ViewBag.Title">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input type="text" class="form-control" id="Price" name="price" value="@ViewBag.PlacePrice">
+    </div>
+
+    <div class="mb-3 ">
+
+        <label class="form-label">PlaceOwner</label>
+
+        <select class="form-control" id="PlaceOwnerId" name="PlaceOwnerId">
+            @foreach (var owner in ViewBag.placeowners)
+            {
+            <option value="@owner.ID">@owner.Name</option>
+            }
+        </select>
+    </div>
+
+
+    <div class="mb-3 ">
+        <label class="form-label">Type</label>
+        <input type="text" class="form-control" id="Type" name="Type" value="@ViewBag.PlaceName">
+    </div>
+    <div class="mb-3 ">
+
+        <div class="mb-3 ">
+            <label class="form-label">Images</label>
+            <input type="file" class="form-control" id="Images" name="Images" multiple>
+        </div>
+
+        <div class="mb-3 ">
+
+            <label class="form-label">City</label>
+
+            <select class="form-control" id="CityId" name="CityId">
+                @foreach (var city in ViewBag.Cities)
+            {
+                <option value="@city.ID">@city.Name</option>
+            }
+            </select>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+

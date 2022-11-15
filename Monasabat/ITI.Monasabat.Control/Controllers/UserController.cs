@@ -98,5 +98,10 @@ namespace ITI.Monasabat.Control.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
     }
 }

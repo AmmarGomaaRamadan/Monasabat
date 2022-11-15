@@ -38,6 +38,7 @@ namespace ITI.Monasabat.Control.Controllers
         }
         public IActionResult OurTeam()
         {
+
             return View();
         }
     }

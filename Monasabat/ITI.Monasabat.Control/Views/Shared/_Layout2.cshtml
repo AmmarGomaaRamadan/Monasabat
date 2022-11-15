@@ -22,7 +22,7 @@
     <link href="~/s/font-awesome.min.css" rel="stylesheet">
 
     <link href="~/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-
+    
 </head>
 <body>
 
@@ -34,43 +34,43 @@
 
             <div class="sidebar-wrapper">
                 <div class="logo">
-                    <a href="index.html" class="simple-text">
+                    <a asp-controller="Home" asp-action="Index" class="simple-text">
                         MONASABAT
                     </a>
                 </div>
 
                 <ul class="nav">
+                    <li>
+                        <a asp-controller="Admin" asp-action="Index">
+                            <i class="pe-7s-user"></i>
+                            <p>Main Dashboard</p>
+                        </a>
+                    </li>
 
                     <li>
-                        <a href="user.html">
+                        <a asp-controller="AdminPlaceOwners" asp-action="Index">
                             <i class="pe-7s-user"></i>
                             <p>Place Owners</p>
                         </a>
                     </li>
                     <li>
-                        <a href="reserve.html">
+                        <a asp-controller="AdminReservations" asp-action="Index">
                             <i class="pe-7s-graph"></i>
                             <p>Reservation </p>
                         </a>
                     </li>
                     <li>
-                        <a href="edit.html">
+                        <a asp-controller="AdminPlace" asp-action="Index">
                             <i class="pe-7s-science"></i>
                             <p>Places</p>
                         </a>
                     </li>
                     <li>
-                        <a href="profit.html">
+                        <a asp-controller="AdminComments" asp-action="Index">
                             <i class="pe-7s-graph"></i>
                             <p>Comments</p>
                         </a>
-                    </li>
-                    <li>
-                        <a href="notifications.html">
-                            <i class="pe-7s-bell"></i>
-                            <p>Create Admin </p>
-                        </a>
-                    </li>
+                    </li>            
                 </ul>
             </div>
         </div>
@@ -88,7 +88,7 @@
                         </button>
                         <a class="navbar-brand" href="dashboard.html">Dashboard</a>
                     </div>
-                    <div class="collapse navbar-collapse">
+                   @* <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-left">
                             <li>
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -136,7 +136,7 @@
                             </li>
                             <li class="separator hidden-lg"></li>
                         </ul>
-                    </div>
+                    </div>*@
                 </div>
             </nav>
 
@@ -146,50 +146,11 @@
                     <div class="row">
 
 
-
+                        @RenderBody();
+                        @RenderSection("Scripts",false);
 
                         <!-- =================================================================================================================== -->
-                        <div class="col-md-8">
-
-
-                            @RenderBody();
-
-
-                        </div>
-
-
-
-                        <!-- ===================================================================================================================================== -->
-                        <div class="col-md-4">
-                            <div class="card card-user">
-                                <div class="image">
-                                    <img src="assets/img/full-screen-image-3.jpg" alt="..." />
-                                </div>
-                                <div class="content">
-                                    <div class="author">
-                                        <a href="#">
-                                            <img class="avatar border-gray" src="assets/img/faces/face-0.jpg" alt="..." />
-
-                                            <h4 class="title">
-                                                Ahmed gamal<br />
-                                                <small>Ahmed95</small>
-                                            </h4>
-                                        </a>
-                                    </div>
-                                    <p class="description text-center">
-                                        <br>
-                                        Lorem ipsum dolor sit amet <br>
-                                        Lorem ipsum dolor sit amet"
-                                    </p>
-                                </div>
-                                <hr>
-                                <div class="text-center">
-                                    <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                                    <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                                    <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-
-                                </div>
-                            </div>
+                        
                         </div>
 
                     </div>

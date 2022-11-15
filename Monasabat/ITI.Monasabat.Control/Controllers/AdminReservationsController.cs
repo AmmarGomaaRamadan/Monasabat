@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using Monasapat.Models;
 
 namespace ITI.Monasabat.Control.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminReservationsController : Controller
     {
         private readonly MonasabatContext _context;
@@ -53,9 +56,6 @@ namespace ITI.Monasabat.Control.Controllers
             return View();
         }
 
-        // POST: AdminReservations/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Status,ReservationTime,PaidMoney,remainingMoney,TotalMoney,placeID,UserID")] Reservation reservation)
@@ -89,9 +89,7 @@ namespace ITI.Monasabat.Control.Controllers
             return View(reservation);
         }
 
-        // POST: AdminReservations/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,Status,ReservationTime,PaidMoney,remainingMoney,TotalMoney,placeID,UserID")] Reservation reservation)
@@ -105,6 +103,22 @@ namespace ITI.Monasabat.Control.Controllers
             {
                 try
                 {
+                    if (reservation.PaidMoney + reservation.remainingMoney != reservation.TotalMoney)
+                    {
+                        ModelState.AddModelError("", "total money should equal paid money +reamining money");
+                        ViewData["placeID"] = new SelectList(_context.Places, "ID", "Name", reservation.placeID);
+                        ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", reservation.UserID);
+                        return View();
+                    }
+                    if (reservation.Status == null || reservation.TotalMoney == 0)
+                    {
+                      
+                        ViewData["placeID"] = new SelectList(_context.Places, "ID", "Name", reservation.placeID);
+                        ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", reservation.UserID);
+                        ModelState.AddModelError("", "you should enter valid data");
+                       
+                        return View();
+                    }
                     _context.Update(reservation);
                     await _context.SaveChangesAsync();
                 }

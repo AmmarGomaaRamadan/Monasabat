@@ -3,17 +3,16 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-
-
-
+@{
+    Layout = "_Layout2";
+}
                     <div>
                        <h2 class="p-2 bg-light border text-center">Details Reservations</h2>
                         <hr />
 
                         <div class="container">
 
-                                <dl class="row">
+                            @*    <dl class="row">
                                     <div class="col-md-2"></div>
 
                                   
@@ -37,7 +36,34 @@
 
                                        <div class="col-md-2"></div>
                                
-                                </dl>
+                                </dl*@>
+
+                                <div class="card card-user">
+                                    <div class="image">
+                                        <img src="~/images/bac.jpg" alt="..." />
+                                    </div>
+                                    <div class="content">
+                                        <div class="author">
+                                            <a href="#">
+                                                <img class="avatar border-gray" src="~/images/blog-04.jpg" alt="..." />
+
+                                                <h4 class="title">
+                                                    <b style="color:#e27542">Status :</b>  @Html.DisplayFor(model => model.Status) <br />
+                                                    <b style="color:#e27542">Reservation Time :</b>  @Html.DisplayFor(model => model.ReservationTime) <br />
+                                                    <b style="color:#e27542">paid Money :</b>  @Html.DisplayFor(model => model.PaidMoney) <br />
+                                                    <b style="color:#e27542">remaining money :</b>  @Html.DisplayFor(model => model.remainingMoney) <br />
+                                                     <b style="color:#e27542">remaining money :</b>  @Html.DisplayFor(model => model.TotalMoney) <br />
+                                                    <b style="color:#e27542">total Monay :</b>  @Html.DisplayFor(model => model.Place.Name) <br />
+                                                    <b style="color:#e27542">User Name : </b> @Html.DisplayFor(model => model.User.FirstName) @Html.DisplayFor(model => model.User.LastName)<br />
+                                                    <small></small>
+                                                </h4>
+                                            </a>
+                                        </div>
+               
+                                    </div>
+                                    <hr>
+
+                                </div>
 
 
                                 <div class="text-end">
