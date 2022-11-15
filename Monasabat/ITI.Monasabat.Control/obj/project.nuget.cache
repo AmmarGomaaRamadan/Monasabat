@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eWYxU/J3TdTh3GPujwZu7jC/2WkFdVvRJTCCNFBOK+xIbikKJkOYrMVCNelDIf1Wds09ObnyW0+yTfTp2/pS4w==",
+  "dgSpecHash": "oHHJxdAa6Owa4YiNORwpvVs5WdW+ek/vwVpJRWt8xzkhia4mmFYR2OOwcUPRyIKbPCTXV9AAYBbV1ucN204jrw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dell\\Downloads\\last11-11-2022\\final\\Monasabat\\ITI.Monasabat.Control\\ITI.Monasabat.Control.csproj",
+  "projectFilePath": "C:\\Users\\dell\\Desktop\\github\\Monasabat\\ITI.Monasabat.Control\\ITI.Monasabat.Control.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dell\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

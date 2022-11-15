@@ -2,6 +2,129 @@
     ViewData["Title"] = "Home Page";
 }
 
+  <style>
+:root {
+  --main-color: #cf811a;
+  --main-color-alt: #e2b213;
+  --main-transition: 0.3s;
+  --main-padding-top: 100px;
+  --main-padding-bottom: 100px;
+  --section-background: #ececec;
+}
+
+
+/* Start Stats */
+.stats {
+  padding-top: var(--main-padding-top);
+  padding-bottom: var(--main-padding-bottom);
+  position: relative;
+  background-image: url("1.PNG");
+  background-size: cover;
+  min-height: 300px;
+}
+.stats::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255 255 255 / 95%);
+}
+.stats h2 {
+  font-weight: bold;
+  font-size: 40px;
+  width: fit-content;
+  margin: 0 auto 50px;
+  position: relative;
+}
+.stats .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+.stats .box {
+  background-color: white;
+  padding: 30px 15px;
+  text-align: center;
+  position: relative;
+  opacity: 0.8;
+  transition: var(--main-transition);
+  box-shadow: 0px 12px 20px 0px rgb(0 0 0 / 13%), 0px 2px 4px 0px rgb(0 0 0 / 12%);
+}
+.stats .box::before,
+.stats .box::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  background-color: var(--main-color);
+  transition: 1s;
+  height: 0;
+}
+.stats .box::before {
+  top: 0;
+  right: 0;
+}
+.stats .box::after {
+  left: 0;
+  bottom: 0;
+}
+.stats .box:hover {
+  opacity: 1;
+}
+.stats .box:hover::before,
+.stats .box:hover::after {
+  height: 100%;
+}
+.stats .box .number {
+  display: block;
+  font-size: 50px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.stats .box .text {
+  color: var(--main-color);
+  font-style: italic;
+  font-size: 20px;
+  font-weight: bold;
+}
+/* End Stats */
+
+/* Start Animation */
+
+
+
+@@keyframes moving-arrow {
+  100% {
+    transform: translateX(10px);
+  }
+}
+@@keyframes flashing {
+  0%,
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    width: 200%;
+    height: 200%;
+  }
+}
+@@keyframes change-background {
+  0%,
+  100% {
+    background-image: url("../imgs/discount-background1.jpg");
+  }
+  50% {
+    background-image: url("../imgs/discount-background2.jpg");
+  }
+}
+
+/* End Animation */
+
+  </style>
+
 	<section class="slide1">
 		<div class="wrap-slick1">
 			<div class="slick1">
@@ -65,7 +188,36 @@
 			</div>
 		</div>
 	</section>
-	
+
+	<!--dynamid -->
+
+	  <div class="stats" id="stats">
+    <h2>Our Awesome Stats</h2>
+    <div class="container">
+      <div class="box">
+        
+			<span class="number">@ViewBag.NumberOFUser</span>
+        <span class="text">Clients</span>
+      </div>
+      <div class="box">
+       
+        <span class="number">  @ViewBag.NumberOfOFReservations</span>
+        <span class="text">Reservations</span>
+      </div>
+      <div class="box">
+        
+        <span class="number">@ViewBag.NumberOfPlaces</span>
+        <span class="text">Places</span>
+      </div>
+      <div class="box">
+        
+        <span class="number">@ViewBag.TotalMoney $</span>
+        <span class="text">Money</span>
+      </div>
+    
+    </div>
+  </div>
+
 	<!-- Banner -->
 	<section class="banner bgwhite p-t-40 p-b-40">
 		<div class="container">
@@ -150,7 +302,7 @@
 
 							<div class="w-size2 p-t-25">
 								<!-- Button -->
-								<a href="#" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
+								<a asp-action="SignUp" asp-controller="User" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
 									Sign Up
 								</a>
 							</div>

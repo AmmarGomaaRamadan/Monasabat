@@ -7337,11 +7337,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dell\\Downloads\\last11-11-2022\\final\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj",
+      "projectUniqueName": "C:\\Users\\dell\\Desktop\\github\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj",
       "projectName": "ITI.Monasabat.Models",
-      "projectPath": "C:\\Users\\dell\\Downloads\\last11-11-2022\\final\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj",
+      "projectPath": "C:\\Users\\dell\\Desktop\\github\\Monasabat\\Monasapat\\ITI.Monasabat.Models.csproj",
       "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dell\\Downloads\\last11-11-2022\\final\\Monasabat\\Monasapat\\obj\\",
+      "outputPath": "C:\\Users\\dell\\Desktop\\github\\Monasabat\\Monasapat\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -3,89 +3,181 @@
     Layout = "_Layout2";
 }
 <style>
-    main {
-        margin-top: 85px;
-        padding: 2rem 1.5rem;
-        background-color: #f1f5f9;
-        min-height: calc(100vh - 90px);
+    :root {
+        --main-color: #5578d8;
+        --main-color-alt: #5c77ec;
+        --main-transition: 0.3s;
+        --main-padding-top: 100px;
+        --main-padding-bottom: 100px;
+        --section-background: #ececec;
     }
 
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 2rem;
-        margin-top: 1rem;
+
+    /* Start Stats */
+    .stats {
+        padding-top: 15px;
+        padding-bottom: var(--main-padding-bottom);
+        position: relative;
+        background-image: url("1.PNG");
+        background-size: cover;
+        min-height: 300px;
     }
 
-    .cards-single {
-        display: flex;
-        justify-content: space-between;
-        background: rgb(190, 82, 240);
-        padding: 2rem;
-        border-radius: 2px;
-    }
-
-        .cards-single div:last-child span {
-            font-size: 3rem;
-            color: var(--main-color);
+        .stats::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(255 255 255 / 95%);
         }
 
-        .cards-single div:first-child span {
-            color: var(--text-grey);
+        .stats h2 {
+            font-weight: bold;
+            font-size: 40px;
+            width: fit-content;
+            margin: 0 auto 50px;
+            position: relative;
         }
 
-        .cards-single:last-child {
-            background: var(--main-color);
+        .stats .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
         }
 
-            .cards-single:last-child h1,
-            .cards-single:last-child div:first-child span
-            .cards-single:last-child div:last-child span {
-                color: rgb(209, 28, 28);
+        .stats .box {
+            background-color: white;
+            padding: 30px 15px;
+            text-align: center;
+            position: relative;
+            opacity: 0.8;
+            transition: var(--main-transition);
+            box-shadow: 0px 12px 20px 0px rgb(0 0 0 / 13%), 0px 2px 4px 0px rgb(0 0 0 / 12%);
+        }
+
+            .stats .box::before,
+            .stats .box::after {
+                content: "";
+                position: absolute;
+                width: 2px;
+                background-color: var(--main-color);
+                transition: 1s;
+                height: 0;
             }
+
+            .stats .box::before {
+                top: 0;
+                right: 0;
+            }
+
+            .stats .box::after {
+                left: 0;
+                bottom: 0;
+            }
+
+            .stats .box:hover {
+                opacity: 1;
+            }
+
+                .stats .box:hover::before,
+                .stats .box:hover::after {
+                    height: 100%;
+                }
+
+            .stats .box .number {
+                display: block;
+                font-size: 50px;
+                font-weight: bold;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            .stats .box .text {
+                color: var(--main-color);
+                font-style: italic;
+                font-size: 20px;
+                font-weight: bold;
+            }
+    /* End Stats */
+
+    /* Start Animation */
+
+
+
+    @@keyframes moving-arrow {
+        100% {
+            transform: translateX(10px);
+        }
+    }
+
+    @@keyframes flashing {
+        0%,
+        40% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            width: 200%;
+            height: 200%;
+        }
+    }
+
+    @@keyframes change-background {
+        0%,
+        100% {
+            background-image: url("../imgs/discount-background1.jpg");
+        }
+
+        50% {
+            background-image: url("../imgs/discount-background2.jpg");
+        }
+    }
+
+    /* End Animation */
+
 </style>
 
 <div class="col-md-8">
-    <main>
-        <div class="cards">
-            <div class="cards-single">
-                <div>
-                    <h1>@ViewBag.NumberOFUser</h1>
-                    <span>Users</span>
-                </div>
-                <div>
-                    <span class="las la-users"></span>
-                </div>
+    <div class="stats" id="stats">
+        <h2>Our Awesome Stats</h2>
+        <div style=" display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 40px;padding: 16px;">
+            <div class="box">
+
+                <span class="number">@ViewBag.NumberOFUser</span>
+                <span class="text">Clients</span>
             </div>
-            <div class="cards-single">
-                <div>
-                    <h1>@ViewBag.NumberOfOFReservations</h1>
-                    <span>Reservations</span>
-                </div>
-                <div>
-                    <span class="las la-clipboard-list"></span>
-                </div>
+            <div class="box">
+
+                <span class="number">  @ViewBag.NumberOfOFReservations</span>
+                <span class="text">Reservations</span>
             </div>
-            <div class="cards-single">
-                <div>
-                    <h1>@ViewBag.NumberOfPlaces</h1>
-                    <span>Places</span>
-                </div>
-                <div>
-                    <span class="las la-shopping-bag"></span>
-                </div>
+            <div class="box">
+
+                <span class="number">@ViewBag.NumberOfPlaces</span>
+                <span class="text">Places</span>
             </div>
-            <div class="cards-single">
-                <div>
-                    <h1>$@ViewBag.TotalMoney</h1>
-                    <span>Total income</span>
-                </div>
-                <div>
-                    <span class="las la-google-wallet"></span>
-                </div>
+            <div class="box">
+
+                <span class="number">@ViewBag.TotalMoney $</span>
+                <span class="text">Money</span>
+            </div>
+            <div class="box">
+
+                <span class="number">@ViewBag.TotalMoney $</span>
+                <span class="text">Comments</span>
+            </div>
+            <div class="box">
+
+                <span class="number">@ViewBag.TotalMoney $</span>
+                <span class="text">Place Owners</span>
             </div>
         </div>
-    </main>
+    </div>
 </div>
 
 
@@ -94,7 +186,7 @@
 <div class="col-md-4">
     <div class="card card-user">
         <div class="image">
-            <img src="~/assets/img/full-screen-image-3.jpg" alt="..." />
+            <img src="~/images/1.jpg" alt="..." />
         </div>
         <div class="content">
             <div class="author">
@@ -109,8 +201,8 @@
             </div>
             <p class="description text-center">
                 <br>
-                Lorem ipsum dolor sit amet <br>
-                Lorem ipsum dolor sit amet"
+                Welcom MR : @User.Identity.Name <br>
+                Here you can Control with you Website
             </p>
         </div>
         <hr>
